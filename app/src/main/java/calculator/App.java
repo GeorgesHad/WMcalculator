@@ -3,12 +3,69 @@
  */
 package calculator;
 
+import com.google.common.math.BigIntegerMath;
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        while (true) {
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Input $ to exit.");
+            System.out.println("What operation do you want to do ?");
+            String operation = scan.nextLine();
+            if (operation.equalsIgnoreCase("$"))break;
+            if (operation.equalsIgnoreCase("factorial")) {
+                System.out.println("\nInput the number:");
+                try {
+                    int number1 = scan.nextInt();
+                    BigInteger factorial = BigIntegerMath.factorial(number1);
+                    System.out.println("The factorial of " + number1 + "is: " + factorial);
+                }catch (Exception e){
+                    System.out.println("Please enter a valid integer.");
+                }
+
+            } else {
+                try {
+                    int result;
+                    switch (operation.toLowerCase()) {
+                        case "addition", "+", "add" -> {
+                            System.out.println("\nInput the first number:");
+                            int number1 = scan.nextInt();
+                            System.out.println("\nInput the second number:");
+                            int number2 = scan.nextInt();
+                            result = number1 + number2;
+                            System.out.println(number1 + " + " + number2 + " = " + result);
+                        }
+                        case "subtract", "-", "minus" -> {
+                            System.out.println("\nInput the first number:");
+                            int number1 = scan.nextInt();
+                            System.out.println("\nInput the second number:");
+                            int number2 = scan.nextInt();
+                            result = number1 - number2;
+                            System.out.println(number1 + " - " + number2 + " = " + result);
+                        }
+                        case "multiply", "x", "*" -> {
+                            System.out.println("\nInput the first number:");
+                            int number1 = scan.nextInt();
+                            System.out.println("\nInput the second number:");
+                            int number2 = scan.nextInt();
+                            result = number1 * number2;
+                            System.out.println(number1 + " * " + number2 + " = " + result);
+                        }
+                        default -> System.out.println("please enter an actual operation.");
+                    }
+                }catch (Exception e)
+                {
+                    System.out.println("Please enter a valid integer.");
+                }
+            }
+        }
+
     }
 }
