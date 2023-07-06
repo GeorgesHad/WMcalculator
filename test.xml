@@ -4,9 +4,10 @@
   <input message="Enter the destination folder name: " addproperty="destination.dir" />
 
   <target name="copy-files">
-    <copy file="${source.dir}" todir="${destination.dir}">
-
+    <copy todir="${destination.dir}">
+      <fileset dir="${source.dir}" includes="**/*"/>
     </copy>
   </target>
 
 </project>
+
