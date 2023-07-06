@@ -1,0 +1,12 @@
+<project name="FileCopy" default="copy-files">
+
+  <input message="Enter the source folder name: " addproperty="source.dir" />
+  <input message="Enter the destination folder name: " addproperty="destination.dir" />
+
+  <target name="copy-files">
+    <copy file="${source.dir}" todir="${destination.dir}">
+
+    </copy>
+  </target>
+
+</project>
