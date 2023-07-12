@@ -13,50 +13,45 @@ public class App {
         return "Hello World!";
     }
 
+
+
+
+
     public static void main(String[] args) {
+        Operation op = new Operation();
+        Scanner scan = new Scanner(System.in);
         while (true) {
-            Scanner scan = new Scanner(System.in);
+            Scanner scan2 = new Scanner(System.in);
             System.out.println("Input $ to exit.");
             System.out.println("What operation do you want to do ?");
-            String operation = scan.nextLine();
+            String operation = scan2.nextLine();
             if (operation.equalsIgnoreCase("$"))break;
             if (operation.equalsIgnoreCase("factorial")) {
-                System.out.println("\nInput the number:");
                 try {
+                    System.out.println("\nInput the number:");
                     int number1 = scan.nextInt();
-                    BigInteger factorial = BigIntegerMath.factorial(number1);
-                    System.out.println("The factorial of " + number1 + "is: " + factorial);
+                    op.factorial(number1);
                 }catch (Exception e){
                     System.out.println("Please enter a valid integer.");
                 }
 
             } else {
                 try {
-                    int result;
+                    System.out.println("\nInput the first number:");
+                    int number1 = scan.nextInt();
+                    System.out.println("\nInput the second number:");
+                    int number2 = scan.nextInt();
+
                     switch (operation.toLowerCase()) {
                         case "addition", "+", "add" -> {
-                            System.out.println("\nInput the first number:");
-                            int number1 = scan.nextInt();
-                            System.out.println("\nInput the second number:");
-                            int number2 = scan.nextInt();
-                            result = number1 + number2;
-                            System.out.println(number1 + " + " + number2 + " = " + result);
+
+                            System.out.println(number1 + " + " + number2 + " = " + op.add(number1,number2));
                         }
                         case "subtract", "-", "minus" -> {
-                            System.out.println("\nInput the first number:");
-                            int number1 = scan.nextInt();
-                            System.out.println("\nInput the second number:");
-                            int number2 = scan.nextInt();
-                            result = number1 - number2;
-                            System.out.println(number1 + " - " + number2 + " = " + result);
+                            System.out.println(number1 + " - " + number2 + " = " + op.subtract(number1,number2));
                         }
                         case "multiply", "x", "*" -> {
-                            System.out.println("\nInput the first number:");
-                            int number1 = scan.nextInt();
-                            System.out.println("\nInput the second number:");
-                            int number2 = scan.nextInt();
-                            result = number1 * number2;
-                            System.out.println(number1 + " * " + number2 + " = " + result);
+                            System.out.println(number1 + " * " + number2 + " = " + op.multiply(number1,number2));
                         }
                         default -> System.out.println("please enter an actual operation.");
                     }
