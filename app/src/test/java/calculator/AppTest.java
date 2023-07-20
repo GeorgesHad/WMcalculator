@@ -10,10 +10,7 @@ import java.math.BigInteger;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        Start classUnderTest = new Start();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
-    }
+
     @Test void add(){
         Operation op= new Operation();
         assertEquals(7,op.add(3,4));
